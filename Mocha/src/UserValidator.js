@@ -1,11 +1,38 @@
 var User = require('./User')
 
 class UserValidator {
-    static validateUser(name, email, birth, nickname, password, confirmPassword) {
-        if (name.trim() === '')
-            throw 'Invalid user name'
+    static validateName(name) {
+        return !(!name || name.trim() === '')
+    }
 
-        return true
+    static validatePassword(password, confirmPassword) {
+        if (!this.isEmpty(password) && (password === confirmPassword)) {
+            const strongRegEx = new RegExp(
+                "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})"
+            );
+
+            return (password.match(strongRegEx)) ? true : false
+        }
+        return false
+    }
+
+    static validateEmail(email) {
+        if (this.isEmpty(email))
+            return false
+
+        const validation = email.match(/\w.*\w@\w+mail.\w+/)
+
+        return validation && (email === validation[0])
+    }
+
+    static validateBirth(birth) {
+        const now = new Date()
+
+        return !this.isEmpty(birth) && birth < now
+    }
+
+    static isEmpty(field) {
+        return (!field || field.trim() === '')
     }
 }
 

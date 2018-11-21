@@ -7,10 +7,6 @@ class User {
         this.nickname = nickname
         this.password = password
     }
-
-    doLogin(email, password) {
-        return (email === this.email) && (password === this.password)
-    }
 }
 
 module.exports = User;
