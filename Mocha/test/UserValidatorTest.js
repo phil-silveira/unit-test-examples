@@ -49,18 +49,32 @@ describe('Testing UserValidator ...', () => {
         })
     })
 
-    describe('Birth validation', () => {
+    describe('Birth validation ...', () => {
         it('validate birth on 10/02/1996', () => {
             const birth = new Date('10/02/1996')
 
             assert.equal(UserValidator.validateBirth(birth), true)
         })
 
-        // it('not validate birth on tomorrow', () => {
-        //     const birth = new Date()
-        //     birth.setDay(birth.getDay() + 1)
+        it('not validate birth on next month', () => {
+            const birth = new Date()
+            birth.setMonth(birth.getMonth() + 1)
 
-        //     assert.equal(UserValidator.validateBirth(birth), false)
-        // })
+            assert.equal(UserValidator.validateBirth(birth), false)
+        })
+    })
+
+    describe('Email validation ...', () => {
+        it('validate good email', () => {
+            const email = 'jaw.www@gmail.com'
+
+            assert.equal(UserValidator.validateEmail(email), true)
+        })
+
+        it('not validate email without @', () => {
+            const email = 'jaw.wwwgmail.com'
+
+            assert.equal(UserValidator.validateEmail(email), false)
+        })
     })
 })

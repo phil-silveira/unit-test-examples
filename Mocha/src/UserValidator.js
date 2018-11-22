@@ -2,7 +2,7 @@ var User = require('./User')
 
 class UserValidator {
     static validateName(name) {
-        return !(!name || name.trim() === '')
+        return !this.isEmpty(name)
     }
 
     static validatePassword(password, confirmPassword) {
@@ -22,17 +22,17 @@ class UserValidator {
 
         const validation = email.match(/\w.*\w@\w+mail.\w+/)
 
-        return validation && (email === validation[0])
+        return (validation) ? (email === validation[0]) : false
     }
 
     static validateBirth(birth) {
         const now = new Date()
 
-        return !this.isEmpty(birth) && birth < now
+        return (typeof birth === 'object') && birth < now
     }
 
     static isEmpty(field) {
-        return (!field || field.trim() === '')
+        return !(field && field.trim() !== '')
     }
 }
 
