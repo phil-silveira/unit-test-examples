@@ -1,4 +1,5 @@
 var User = require('./User')
+var UserException = require('./UserException')
 
 class UserValidator {
     static validateName(name) {

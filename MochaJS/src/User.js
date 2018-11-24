@@ -1,5 +1,5 @@
 class User {
-    constructor(name, email, birth, nickname, password) {
+    constructor(name, birth, email, nickname, password) {
         this.name = name
         this.email = email
         this.birth = new Date(birth)
@@ -8,5 +8,6 @@ class User {
         this.password = password
     }
 }
+
 
 module.exports = User;

@@ -77,4 +77,28 @@ describe('Testing UserValidator ...', () => {
             assert.equal(UserValidator.validateEmail(email), false)
         })
     })
+
+    describe("It's only a test template", () => {
+        // hooks
+        before(() => {
+            // It's run before all tests in this block
+        })
+
+        beforeEach(() => {
+            // It's run before each test in this block
+        })
+
+        after(() => {
+            // It's run after all tests in this block
+        })
+        afterEach(() => {
+            // It's run after each test in this block
+        })
+
+        // test cases
+        it('validate hello world', () => {
+            //...
+            assert.ok('Hello World :)')
+        })
+    })
 })
